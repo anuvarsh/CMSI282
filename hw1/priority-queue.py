@@ -23,10 +23,10 @@ class PriorityQueue:
 		return self
 
 	def __len__(self):
-		self.heap.len()
+		len(self.heap)
 
 	def __str__(self):
-		self.heap.str()
+		str(self.heap)
 
 	# Sift up the element at index i
 	def sift_up(self, i):
