@@ -1,12 +1,13 @@
 class PriorityQueue:
 
 	def __init__(self):
-		self.heap = [None] * 1000000 
-		# heap arbitrarily set to have max size of 1,000,000
+		self.heap = []
+		self.size = 0
 
 	def add(self, x):
-		self.append(x)
-		self.sift-up(len(self.heap)-1)
+		self.heap.append(x)
+		self.sift_up(len(self.heap)-1)
+		self.size += 1
 		return self
 
 	def peek(self):
@@ -14,39 +15,45 @@ class PriorityQueue:
 
 	def remove(self):
 		if self.len == 0:
-			raise ValueError, "It was empty."
+			raise ValueError "The queue is empty."
 		if self.len == 1:
 			self.heap = []
+			self.size -= 1
 		else: 
-			self.heap[0] = None
+			self.heap[0] = self.heap.pop()
 			sift_down(0)
+			self.size -= 1
 		return self
 
 	def __len__(self):
-		len(self.heap)
+		# return len(self.heap)
+		# Or if we shouldn't use the len() function...
+		return size
 
 	def __str__(self):
-		str(self.heap)
+		# return str(self.heap)
+		# Or if we shouldn't use the str() function...
+		return for p in self.heap: print p
 
 	# Sift up the element at index i
 	def sift_up(self, i):
-		parent = math.floor((i - 1)/2)
+		parent = (i - 1)
 		if parent >= 0 and self.heap[parent] > self.heap[i]:
 			self.heap[parent] = self.heap[i]
 			self.heap[i] = self.heap[parent]
-			sift_up(parent)
+			self.sift_up(parent)
 
 	# Sift down the element at index i
 	def sift_down(self, i):
-		child = math.floor((i * 2) + 1)
-		if child >= self.heap.len:
+		child = (i * 2) + 1
+		if child >= len(self.heap):
 			return 
-		if child + 1 < self.heap.len and self.heap[child] > self.heap[child + 1]:
+		if child + 1 < len(self.heap) and self.heap[child] > self.heap[child + 1]:
 			child += 1
 		if self.heap[i] > self.heap[child]:
 			self.heap[child] = self.heap[i]
 			self.heap[i] = self.heap[child]
-			sift_down(child)
+			self.sift_down(child)
 
 
 
